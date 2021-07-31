@@ -2,19 +2,19 @@
 
 
 def function(my_input):
-    result = []
+    input_line = []
     for i in my_input:
         if i.isnumeric():
-            result.append(i)
+            input_line.append(i)
         else:
-            result.append(" ")
-    result = "".join(result)
-    result = result.split(sep=" ")
-    test = 0
-    for j in result:
+            input_line.append(" ")
+    input_line = "".join(input_line)
+    input_line = input_line.split(sep=" ")
+    result = 0
+    for j in input_line:
         if j.isnumeric():
-            test += int(j)
-    print(test)
+            result += int(j)
+    print(result)
 
 
 print("Введите Ваш текст: ")
