@@ -3,14 +3,14 @@
 shells_quantity = {}
 groups_uids = {}
 
-with open("/etc/group", 'r') as group_file:
+with open("group", 'r') as group_file:
     groups = []
     gusers = []
     for line in group_file:
         group_split_line = line.split(sep=":")
         groups.append(group_split_line[0])
         gusers.append(group_split_line[-1][:-1])
-    with open("/etc/passwd", 'r') as passwd_file:
+    with open("passwd", 'r') as passwd_file:
         shells = []
         for line in passwd_file:
             passwd_split_line = line.split(sep=":")
