@@ -12,10 +12,9 @@
 #
 # d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
-digit = "".join([str(x) for x in range(1, 1000000)])
-degree = [(10 ** x) - 1 for x in range(0, 7)]
-result = 0
-for i in degree:
-    result += (int(digit[i]))
+# test = (i for i in [(10 ** x) - 1 for x in range(0, 7)])
+
+
+result = sum([int("".join([str(x) for x in range(1, 1000000)])[y]) for y in [(10 ** x) - 1 for x in range(0, 7)]])
 
 print(result)
