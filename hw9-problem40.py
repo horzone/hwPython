@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from functools import reduce
 
 # problem40 - list comprehension
 #
@@ -15,6 +16,7 @@
 # test = (i for i in [(10 ** x) - 1 for x in range(0, 7)])
 
 
-result = sum([int("".join([str(x) for x in range(1, 1000000)])[y]) for y in [(10 ** x) - 1 for x in range(0, 7)]])
+result = reduce(lambda x, y: x * y,
+                [int("".join([str(x) for x in range(1, 1000000)])[y]) for y in [(10 ** x) - 1 for x in range(0, 7)]])
 
 print(result)
