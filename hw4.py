@@ -25,4 +25,4 @@ def function(my_input):
 
 
 print("Введите Ваш текст: ")
-function('324k32h43k2jh423kj4h2-351')
+function(input())
