@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-
+# 1. После запуска предлагает пользователю ввести целые неотрицательные числа,
+# разделенные любым не цифровым литералом (пробел, запятая, %, буква и т.д.).
+# 2. Получив вводные данные, выделяет полученные числа, суммирует их,
+# и печатает полученную сумму.
 
 def function(my_input):
     input_line = []
@@ -7,6 +10,8 @@ def function(my_input):
         if my_input[i].isnumeric():
             input_line.append(my_input[i])
         elif my_input[i] == "-" and my_input[i+1].isnumeric():
+            if my_input[i+1].isnumeric():
+                input_line.append(" ")
             input_line.append(my_input[i])
         else:
             input_line.append(" ")
@@ -20,4 +25,4 @@ def function(my_input):
 
 
 print("Введите Ваш текст: ")
-function(input())
+function('324k32h43k2jh423kj4h2-351')
