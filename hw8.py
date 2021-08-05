@@ -25,20 +25,23 @@
 # -> cancel
 # Bye!
 
-print("введите Ваш текст")
-while True:
-    my_input = input()
-    if my_input.isdigit():
-        result = int(my_input)
+
+# hw8 - нет функции.
+def function():
+    print("введите Ваш текст")
+    number = input()
+    if number.isdigit():
+        result = int(number)
         if result % 2 == 0:
             result = result // 2
             print(result)
-
         else:
             result = (result * 3) + 1
             print(result)
-    elif my_input == "cancel":
+    elif number == "cancel":
         print("Выход, bye!")
-        break
     else:
         print("Не удалось преобразовать введенный текст в число.")
+        function()
+
+function()
