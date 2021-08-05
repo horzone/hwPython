@@ -11,7 +11,10 @@ from functools import reduce
 # Find the product abc.
 
 
-result = [c*b*a for c in range(1, 1001) for b in range(1, c) for a in range(1, b) if
-                                     a ** 2 + b ** 2 == c ** 2 and a + b + c == 1000]
+# hw9 - 9 долго считает. Я не дождался.
+
+
+result = [b * a * ((1000 - a) - b) for b in range(1, 1001) for a in range(1, b) if
+          a ** 2 + b ** 2 == ((1000 - a) - b) ** 2]
 
 print(result)
