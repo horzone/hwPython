@@ -9,21 +9,17 @@
 # Напишите программу, которая решает описанную выше задачу и печатает ответ.
 
 
-# Функция проверяет, явлется ли заданное число палиндромом в десятичной и в 2ичной системе исчисления и
-# возвращает True или False в зависимости от результата
+# hw6: ПалИндром. Что возвращает функция?
+# изменил фунцию
 
-def isPalindromic(checked_number):
-    if str(checked_number) == str(checked_number)[::-1]:
-        checked_number = bin(checked_number)[2:]
-        if checked_number == checked_number[::-1]:
-            return True
-    else:
-        return False
+def isPalindromic_less_million():
+    result = 0
+    for checked_number in range(0, 1000000):
+        if str(checked_number) == str(checked_number)[::-1]:
+            checked_number_bin = bin(checked_number)[2:]
+            if checked_number_bin == checked_number_bin[::-1]:
+                result += int(checked_number)
+    print(result)
 
 
-result = 0
-for number in range(0, 1000000):
-    if isPalindromic(number):
-        result += number
-
-print(result)
+isPalindromic_less_million()
