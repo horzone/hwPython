@@ -1,5 +1,20 @@
 # -*- coding: utf-8 -*-
 
+# Напишите программу, которая читает данные из файлов
+# /etc/passwd и /etc/group на вашей системе и выводит
+# следующую информацию в файл output.txt:
+# 1. Количество пользователей, использующих все имеющиеся
+# интерпретаторы-оболочки.
+# ( /bin/bash - 8 ; /bin/false - 11 ; ... )
+# 2. Для всех групп в системе - UIDы пользователей
+# состоящих в этих группах.
+# ( root:1, sudo:1001,1002,1003, ...)
+
+
+
+# hw7 - мало групп, лишняя запятая в выводе.
+# TODO не понимаю, что значит *мало групп*, выводит ровно столько, сколько в файле /etc/groups, группы в которых не
+# TODO состоят пользователи - не выводит.
 shells_quantity = {}
 groups_uids = {}
 
@@ -40,6 +55,4 @@ with open("output.txt", 'w') as output_file:
         output_file.write('{} - {} ; '.format(shell, quantity))
     output_file.write("\n")
     for group, uid in groups_uids.items():
-        output_file.write('{}:{}, '.format(group, uid))
-
-
+        output_file.write('{}:{}; '.format(group, uid))
