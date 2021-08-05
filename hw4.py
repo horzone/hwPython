@@ -9,7 +9,7 @@ def function(my_input):
     for i in range(0, len(my_input)):
         if my_input[i].isnumeric():
             input_line.append(my_input[i])
-        elif my_input[i] == "-" and my_input[i+1].isnumeric():
+        elif my_input[i] == "-" and i+1 != len(my_input) and my_input[i+1].isnumeric():
             if my_input[i+1].isnumeric():
                 input_line.append(" ")
             input_line.append(my_input[i])
