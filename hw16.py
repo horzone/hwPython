@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import googlemaps
 
+
 # Написать программу, которая будет считывать из файла gps координаты,
 # и формировать текстовое описание объекта и ссылку на google maps.
 # Пример:
@@ -22,6 +23,8 @@ def function(latlng):
     print(f'Location: {place_name}, {place_address}')
     print(f'Google Maps URL: {place_url}')
 
-with open('gps.txt', 'r') as my_file:
-    for line in my_file:
-        function(latlng=line)
+
+if __name__ == 'main':
+    with open('gps.txt', 'r') as my_file:
+        for line in my_file:
+            function(latlng=line)
