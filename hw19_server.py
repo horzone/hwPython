@@ -39,7 +39,11 @@ while True:
     if data.decode() in dns_cache:
         name = dns_cache[data.decode()]
     else:
-        # Если запись не переопределена, определяем hostname и возвращаем его
-        name = socket.gethostbyname(f'{data.decode()}')
+        try:
+            # Если запись не переопределена, определяем hostname и возвращаем его
+            name = socket.gethostbyname(f'{data.decode()}')
+        except(socket.gaierror):
+            # Если при резолве имени произошла ошибка, сообщаем о ней
+            name = 'wrong domain.name'
     # Отправляем информацию клиенту
     server.sendto(bytes(name, 'utf-8'), address)
