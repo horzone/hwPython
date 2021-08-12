@@ -23,8 +23,7 @@ def function(latlng):
     print(f'Location: {place_name}, {place_address}')
     print(f'Google Maps URL: {place_url}')
 
-
-if __name__ == 'main':
+if __name__ == '__main__':
     with open('gps.txt', 'r') as my_file:
         for line in my_file:
             function(latlng=line)
