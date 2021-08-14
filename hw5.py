@@ -6,13 +6,15 @@
 # список чисел и печатает его.
 
 def function(my_input):
-    my_input = my_input.split(sep=" ")
-    my_input = [int(i) for i in my_input]
-    for i in range(1, max(my_input)+1):
-        if i not in my_input:
+    result = []
+    for i in range(0, len(my_input)):
+        if my_input[i].isdigit():
+            result.append(int(my_input[i]))
+    for i in range(1, max(result)+1):
+        if i not in result:
             print(i)
             return
-        elif i == (max(my_input)):
+        elif i == (max(result)):
             print(i+1)
 
 
