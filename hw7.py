@@ -13,8 +13,8 @@
 
 
 # hw7 - мало групп, лишняя запятая в выводе.
-# TODO не понимаю, что значит *мало групп*, выводит ровно столько, сколько в файле /etc/groups, группы в которых не
-# TODO состоят пользователи - не выводит.
+
+
 shells_quantity = {}
 groups_uids = {}
 
@@ -27,8 +27,12 @@ with open('group', 'r') as group_file:
         gusers.append(group_split_line[-1][:-1])
     with open('passwd', 'r') as passwd_file:
         shells = []
+        user_group_name = []
+        user_id = []
         for line in passwd_file:
             passwd_split_line = line.split(sep=":")
+            user_group_name.append(passwd_split_line[0])
+            user_id.append(passwd_split_line[2])
             for users in gusers:
                 if "," in users:
                     split_users = users.split(sep=",")
@@ -44,6 +48,8 @@ with open('group', 'r') as group_file:
         for i in range(len(gusers)):
             if gusers[i] != '':
                 groups_uids[groups[i]] = gusers[i]
+        for i in range(0, len(user_group_name)):
+            groups_uids[user_group_name[i]] = user_id[i]
         for shell in shells:
             if shell in shells_quantity.keys():
                 shells_quantity[shell] += 1
