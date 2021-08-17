@@ -7,6 +7,6 @@ from hw16 import function as hw16_function
 # из hw16.txt
 
 data = gpsphoto.getGPSData('IMG_8535.JPG')
-latlng = f"{data['Latitude']} , {data['Longitude']}"
+latlng = f"{data['Latitude']},{data['Longitude']}"
 
 hw16_function(latlng)
