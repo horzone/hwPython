@@ -7,11 +7,41 @@
 
 
 def merge(list1, list2):
-    list1 = list(list1)
-    list2 = list(list2)
-    for i in list(zip(list1, list2)):
-        for j in range(0, 2):
-            yield i[j]
+    first_value = next(list1)
+    second_value = next(list2)
+    check_first_val = True
+    check_second_val = True
+    while True:
+        if first_value <= second_value and check_first_val:
+            try:
+                yield first_value
+                first_value = next(list1)
+                continue
+            except(StopIteration):
+                check_first_val = False
+                continue
+        elif first_value >= second_value and check_second_val:
+            try:
+                yield second_value
+                second_value = next(list2)
+                continue
+            except(StopIteration):
+                check_second_val = False
+                continue
+        else:
+            try:
+                if first_value > second_value:
+                    yield first_value
+                    first_value = next(list1)
+                    continue
+                if first_value < second_value:
+                    yield second_value
+                    second_value = next(list2)
+                    continue
+                if first_value == second_value:
+                    break
+            except(StopIteration):
+                break
 
 
 result = list(merge((x for x in range(1, 4)), (x for x in range(2, 5))))
