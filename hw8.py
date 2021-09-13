@@ -28,20 +28,26 @@
 
 # hw8 - нет функции.
 def function():
-    print("введите Ваш текст")
-    number = input()
-    if number.isdigit():
-        result = int(number)
+    def to_int_recursive(number=None):
+        print("введите Ваш текст")
+        number = input()
+        if number.isdigit():
+            return int(number)
+        elif number == "cancel":
+            print("Выход, bye!")
+            exit(0)
+        else:
+            print("Не удалось преобразовать введенный текст в число.")
+            return to_int_recursive(number)
+
+    while True:
+        result = to_int_recursive()
         if result % 2 == 0:
             result = result // 2
             print(result)
         else:
             result = (result * 3) + 1
             print(result)
-    elif number == "cancel":
-        print("Выход, bye!")
-    else:
-        print("Не удалось преобразовать введенный текст в число.")
-        function()
+
 
 function()
