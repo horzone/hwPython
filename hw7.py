@@ -29,10 +29,12 @@ with open('group', 'r') as group_file:
         shells = []
         user_group_name = []
         user_id = []
+        group_id = []
         for line in passwd_file:
             passwd_split_line = line.split(sep=":")
             user_group_name.append(passwd_split_line[0])
             user_id.append(passwd_split_line[2])
+            group_id.append(passwd_split_line[3])
             for users in gusers:
                 if "," in users:
                     split_users = users.split(sep=",")
@@ -49,7 +51,17 @@ with open('group', 'r') as group_file:
             if gusers[i] != '':
                 groups_uids[groups[i]] = gusers[i]
         for i in range(0, len(user_group_name)):
-            groups_uids[user_group_name[i]] = user_id[i]
+            index_group_id = group_id.index(group_id[i])
+            if index_group_id != i:
+                if user_group_name[index_group_id] in groups_uids:
+                    groups_uids[user_group_name[index_group_id]] += ',' + user_id[i]
+                else:
+                    groups_uids[user_group_name[index_group_id]] = user_id[i]
+            if index_group_id == i:
+                if user_group_name[i] in groups_uids:
+                    groups_uids[user_group_name[i]] += ',' + user_id[i]
+                else:
+                    groups_uids[user_group_name[i]] = user_id[i]
         for shell in shells:
             if shell in shells_quantity.keys():
                 shells_quantity[shell] += 1
