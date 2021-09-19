@@ -26,28 +26,27 @@
 # Bye!
 
 
-# hw8 - нет функции.
-def function():
-    def to_int_recursive(number=None):
-        print("введите Ваш текст")
-        number = input()
-        if number.isdigit():
-            return int(number)
-        elif number == "cancel":
-            print("Выход, bye!")
-            exit(0)
+def to_int_recursive(check_to_int, index=0):
+    if index + 1 > len(check_to_int):
+        return int(check_to_int)
+    elif check_to_int[index].isdigit():
+        return to_int_recursive(check_to_int, index=index + 1)
+
+
+while True:
+    print("введите Ваш текст")
+    to_int = input()
+    if to_int == "cancel":
+        print("Bye!")
+        exit()
+    else:
+        result = to_int_recursive(to_int)
+        if result is not None:
+            if result % 2 == 0:
+                result = result // 2
+                print(result)
+            else:
+                result = (result * 3) + 1
+                print(result)
         else:
             print("Не удалось преобразовать введенный текст в число.")
-            return to_int_recursive(number)
-
-    while True:
-        result = to_int_recursive()
-        if result % 2 == 0:
-            result = result // 2
-            print(result)
-        else:
-            result = (result * 3) + 1
-            print(result)
-
-
-function()
